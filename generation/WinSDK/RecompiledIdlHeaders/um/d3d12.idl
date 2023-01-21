@@ -4072,14 +4072,14 @@ typedef struct D3D12_DXIL_LIBRARY_DESC
 {
     D3D12_SHADER_BYTECODE  DXILLibrary;
     UINT NumExports; // Optional, if 0 all exports in the library/collection will be surfaced
-    [annotation("_In_reads_(NumExports)")] D3D12_EXPORT_DESC* pExports;
+    [annotation("_In_reads_(NumExports)")] const D3D12_EXPORT_DESC* pExports;
 } D3D12_DXIL_LIBRARY_DESC;
 
 typedef struct D3D12_EXISTING_COLLECTION_DESC
 {
     ID3D12StateObject* pExistingCollection;
     UINT NumExports; // Optional, if 0 all exports in the library/collection will be surfaced
-    [annotation("_In_reads_(NumExports)")] D3D12_EXPORT_DESC* pExports;
+    [annotation("_In_reads_(NumExports)")] const D3D12_EXPORT_DESC* pExports;
 } D3D12_EXISTING_COLLECTION_DESC;
 
 typedef struct D3D12_SUBOBJECT_TO_EXPORTS_ASSOCIATION
@@ -5214,9 +5214,9 @@ cpp_quote("    _COM_Outptr_opt_ void** ppDevice );")
 cpp_quote("")
 
 cpp_quote("")
-cpp_quote("typedef HRESULT (WINAPI* PFN_D3D12_GET_DEBUG_INTERFACE)( _In_ REFIID, _COM_Outptr_opt_ void** );")
+cpp_quote("typedef HRESULT (WINAPI* PFN_D3D12_GET_DEBUG_INTERFACE)( _In_ REFIID, _COM_Outptr_ void** );")
 cpp_quote("")
-cpp_quote("HRESULT WINAPI D3D12GetDebugInterface( _In_ REFIID riid, _COM_Outptr_opt_ void** ppvDebug );")
+cpp_quote("HRESULT WINAPI D3D12GetDebugInterface( _In_ REFIID riid, _COM_Outptr_ void** ppvDebug );")
 cpp_quote("")
 
 cpp_quote("// --------------------------------------------------------------------------------------------------------------------------------")
